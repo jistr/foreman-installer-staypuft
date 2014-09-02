@@ -28,7 +28,16 @@ class AuthenticationWizard < BaseWizard
   attr_accessor *attrs.keys
 
   def get_root_password
-    @root_password = ask("new value for root password") { |q| q.echo = '*' }
+    password_confirmed = false
+    while !password_confirmed
+      @root_password = ask("new value for root password") { |q| q.echo = '*' }
+      root_password_confirmation = ask("enter new root password again to confirm") { |q| q.echo = '*' }
+      if @root_password == root_password_confirmation
+        password_confirmed = true
+      else
+        say_error "Password and confirmation do not match. Please re-enter the password."
+      end
+    end
   end
 
   def get_ssh_public_key

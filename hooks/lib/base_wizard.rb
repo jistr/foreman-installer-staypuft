@@ -64,9 +64,13 @@ class BaseWizard
       send(method_name) if respond_to?(method_name)
     end.compact
 
-    say HighLine.color("\nUnable to proceed because of following errors:", :bad) unless errors.empty?
-    errors.each { |error| say '  ' + HighLine.color(error, :bad) }
+    say_error("\nUnable to proceed because of following errors:") unless errors.empty?
+    errors.each { |error| say_error('  ' + error) }
     errors.empty?
+  end
+
+  def say_error(message)
+    say HighLine.color(message, :bad)
   end
 
   def kafo_param(attr)
