@@ -107,6 +107,7 @@ cp config/staypuft-installer.answers.yaml %{buildroot}%{_sysconfdir}/foreman/sta
 %{_datadir}/foreman-installer/hooks/boot/10-add_client_options.rb
 %{_datadir}/foreman-installer/hooks/post/10-register_in_staypuft.rb
 %{_datadir}/foreman-installer/modules/foreman/manifests/plugin/staypuft_client.pp
+%{_datadir}/foreman-installer/modules/discovery_facts
 %config %attr(600, root, root) %{_sysconfdir}/foreman/staypuft-client-installer.yaml
 %{_sbindir}/staypuft-client-installer
 
